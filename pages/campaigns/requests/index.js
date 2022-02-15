@@ -6,6 +6,7 @@ import { Button } from 'semantic-ui-react';
 class RequestIndex extends Component {
   static async getInitialProps(props) {
     const { address } = props.query;
+    console.log(address);
     return { address };
   }
   render() {
