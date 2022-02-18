@@ -100,7 +100,11 @@ contract Campaign {
         );
     }
 
-    function getRequestCount() public view returns (uint256) {
+    // function getAllRequests() public view returns (Request[]) {
+    //     return requests;
+    // }
+
+    function getRequestsCount() public view returns (uint256) {
         return requests.length;
     }
 }
