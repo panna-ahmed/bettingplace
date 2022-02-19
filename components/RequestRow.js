@@ -23,7 +23,7 @@ class RequestRow extends Component {
   render() {
     const { Row, Cell } = Table;
     const { id, request, approversCount } = this.props;
-    const readyToFinalize = request.approversCount / 2;
+    const readyToFinalize = request.approversCount > approversCount / 2;
 
     return (
       <Row
@@ -46,7 +46,9 @@ class RequestRow extends Component {
         </Cell>
         <Cell>
           {request.complete ? null : (
-            <Button color="teal" basic onClick={this.onFinalize}></Button>
+            <Button color="teal" basic onClick={this.onFinalize}>
+              Finalize
+            </Button>
           )}
         </Cell>
       </Row>

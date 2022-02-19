@@ -9,11 +9,14 @@ class RequestIndex extends Component {
   static async getInitialProps(props) {
     const { address } = props.query;
     const campaign = Campaign(address);
+    //console.log(campaign);
     const requestsCount = await campaign.methods.getRequestsCount().call();
     const approversCount = await campaign.methods.approversCount().call();
 
+    //console.log(requestsCount, approversCount);
+
     const requests = await Promise.all(
-      Array(requestsCount)
+      Array(parseInt(requestsCount))
         .fill()
         .map((element, index) => {
           return campaign.methods.requests(index).call();
@@ -62,7 +65,7 @@ class RequestIndex extends Component {
               <HeaderCell>Finalize</HeaderCell>
             </Row>
           </Header>
-          <Body>{this.renderRows().map((m, i))}</Body>
+          <Body>{this.renderRows()}</Body>
         </Table>
         <div>Found {this.props.requestsCount} requests</div>
       </Layout>
